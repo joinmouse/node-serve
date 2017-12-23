@@ -1,7 +1,10 @@
 extends layout
 
 block content
-  h1= user.firstName
-  h1= user.lastName
-  h2= user.age
+  - 
+    var list = users
+  each item in list
+    h1= item.firstName
+    h1= item.lastName
+    h3= item.age
   
