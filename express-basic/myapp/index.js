@@ -2,6 +2,7 @@ const express = require('express')
 const http = require('http')
 const app = express()
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 
 //body-parser使用,函数的返回为一个函数
 //function bodyParser() {
@@ -9,6 +10,8 @@ const bodyParser = require('body-parser')
 // }
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+
+app.use(cookieParser())
 
 //app.use(require('./middlewares/auth'))
 
@@ -28,6 +31,10 @@ function middleware3(req, res, next) {
 
 app.use(middleware1, middleware2, middleware3)
 
+
+app.get('/users/:userId/books/:bookId', function(req, res) {
+  res.end(req.params)
+})
 // app.use((req, res, next) => {
 //   console.log(`req.duang：${req.duang}`)
 //   next('something wrong')
@@ -40,7 +47,8 @@ app.use(middleware1, middleware2, middleware3)
 
 //错误处理中间件
 app.use((err, req, res, next) => {
-  res.end(err)
+  res.status(err.status || 500);
+  res.end('error');
 })
 
 const server = http.createServer(app)
