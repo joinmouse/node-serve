@@ -7,7 +7,7 @@ const userService = require('../service/user')
 router.get('/', function(req, res, next) {
   const users = userService.getAllUsers()
   res.locals.users = users
-  res.render('user')
+  res.render('users')
 });
 
 router.post('/', function(req, res){
@@ -16,4 +16,18 @@ router.post('/', function(req, res){
   res.json(users)
 })
 
+router.get('/:userId', (req, res) => {
+  const user = userService.getUserById(Number(req.params.userId))
+  res.locals.user = user
+  res.render('user')
+})
+
+router.post('/:userId/subscription', (req, res, next) => {
+  try {
+    const sub = userService.createSubscription(Number(req.params.userId), req.body.url)
+    res.json(sub) 
+  } catch (e) {
+    next(e)
+  }
+})
 module.exports = router;
