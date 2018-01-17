@@ -8,4 +8,4 @@ class ServerError extends HTTPBaseError {
   }
 }
 
-module.exports = HTTPBaseError
+module.exports = HTTPBaseError 

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  - 
+    var list = users
+  each item in list
+    h1= item.name
+    h3= item.age
+  

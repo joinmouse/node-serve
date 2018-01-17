@@ -1,0 +1,4 @@
+{"level":"info","message":"my first log with winston","timestamp":"2018-01-14T15:10:29.255Z"}
+{"level":"error","message":"my first error log with winston","timestamp":"2018-01-14T15:13:05.717Z"}
+{"level":"info","message":"my first log with winston","timestamp":"2018-01-14T15:15:31.868Z"}
+{"level":"error","message":"my first error log with winston","timestamp":"2018-01-14T15:15:31.869Z"}
